@@ -1,0 +1,15 @@
+.main_container {
+  display: flex;
+  justify-content:space-between;
+  width:600px;
+  height:300px;
+  border:1px solid black;
+  margin:0 auto;
+}
+
+.prof {
+  border:1px solid black;
+  width:200px;
+  text-align: center;
+
+}

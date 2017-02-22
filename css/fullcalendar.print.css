@@ -18,6 +18,10 @@
 /* Global Event Restyling
 --------------------------------------------------------------------------------------------------*/
 
+body {
+	overflow-y: hidden;
+}
+
 .fc-event {
 	background: #fff !important;
 	color: #000 !important;

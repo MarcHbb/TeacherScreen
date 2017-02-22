@@ -132,7 +132,7 @@ function enableCursor() {
 
 // Given a total available height to fill, have `els` (essentially child rows) expand to accomodate.
 // By default, all elements that are shorter than the recommended height are expanded uniformly, not considering
-// any other els that are already too tall. if `shouldRedistribute` is on, it considers these tall rows and 
+// any other els that are already too tall. if `shouldRedistribute` is on, it considers these tall rows and
 // reduces the available height.
 function distributeHeight(els, availableHeight, shouldRedistribute) {
 
@@ -1695,13 +1695,13 @@ function Promise(executor) {
 			}
 		);
 	}
-	
+
 	if (Promise.immediate) {
 		var origThen = promise.then;
 
 		promise.then = function(onFulfilled, onRejected) {
 			var state = promise.state();
-			
+
 			if (state === 'resolved') {
 				if (typeof onFulfilled === 'function') {
 					return Promise.resolve(onFulfilled(promise._value));
@@ -3431,7 +3431,7 @@ var Grid = FC.Grid = Class.extend(ListenerMixin, MouseIgnorerMixin, {
 
 	// Generates the format string used for event time text, if not explicitly defined by 'timeFormat'
 	computeEventTimeFormat: function() {
-		return this.view.opt('smallTimeFormat');
+		return this.view.opt('noMeridiemTimeFormat');
 	},
 
 
@@ -5942,7 +5942,7 @@ var DayGrid = FC.DayGrid = Grid.extend(DayTableMixin, {
 
 	// Computes a default event time formatting string if `timeFormat` is not explicitly defined
 	computeEventTimeFormat: function() {
-		return this.view.opt('extraSmallTimeFormat'); // like "6p" or "6:30p"
+		return this.view.opt('noMeridiemTimeFormat'); // like "6p" or "6:30p"
 	},
 
 
@@ -6323,7 +6323,7 @@ DayGrid.mixin({
 			'<span class="fc-title">' +
 				(htmlEscape(event.title || '') || '&nbsp;') + // we always want one line of height
 			'</span>';
-		
+
 		return '<a class="' + classes.join(' ') + '"' +
 				(event.url ?
 					' href="' + htmlEscape(event.url) + '"' :
@@ -6452,7 +6452,7 @@ DayGrid.mixin({
 		// Give preference to elements with certain criteria, so they have
 		// a chance to be closer to the top.
 		this.sortEventSegs(segs);
-		
+
 		for (i = 0; i < segs.length; i++) {
 			seg = segs[i];
 
@@ -7048,7 +7048,7 @@ var TimeGrid = FC.TimeGrid = Grid.extend(DayTableMixin, {
 
 		this.labelFormat =
 			input ||
-			view.opt('smallTimeFormat'); // the computed default
+			view.opt('noMeridiemTimeFormat'); // the computed default
 
 		input = view.opt('slotLabelInterval');
 		this.labelInterval = input ?
@@ -11043,7 +11043,7 @@ Calendar.mixin({
 	//   func // callback function to be called upon change
 	//   names // option names whose values should be given to func
 	// }
-	optionHandlers: null, 
+	optionHandlers: null,
 
 	// Calls handlerFunc immediately, and when the given option has changed.
 	// handlerFunc will be given the option value.
@@ -11120,13 +11120,13 @@ Calendar.defaults = {
 
 	weekNumberTitle: 'W',
 	weekNumberCalculation: 'local',
-	
+
 	//editable: false,
 
 	//nowIndicator: false,
 
 	scrollTime: '06:00:00',
-	
+
 	// event ajax
 	lazyFetching: true,
 	startParam: 'start',
@@ -11159,7 +11159,7 @@ Calendar.defaults = {
 	},
 
 	allDayText: 'all-day',
-	
+
 	// jquery-ui theming
 	theme: false,
 	themeButtonIcons: {
@@ -11173,10 +11173,10 @@ Calendar.defaults = {
 	dragOpacity: .75,
 	dragRevertDuration: 500,
 	dragScroll: true,
-	
+
 	//selectable: false,
 	unselectAuto: true,
-	
+
 	dropAccept: '*',
 
 	eventOrder: 'title',
@@ -11186,12 +11186,12 @@ Calendar.defaults = {
 	eventLimitText: 'more',
 	eventLimitClick: 'popover',
 	dayPopoverFormat: 'LL',
-	
+
 	handleWindowResize: true,
 	windowResizeDelay: 100, // milliseconds before an updateSize happens
 
 	longPressDelay: 1000
-	
+
 };
 
 
@@ -11339,7 +11339,7 @@ var momComputableOptions = {
 	},
 
 	// Produces format strings like "h(:mm)a" -> "6pm" / "6:30pm"
-	smallTimeFormat: function(momOptions) {
+	noMeridiemTimeFormat: function(momOptions) {
 		return momOptions.longDateFormat('LT')
 			.replace(':mm', '(:mm)')
 			.replace(/(\Wmm)$/, '($1)') // like above, but for foreign locales
@@ -11347,7 +11347,7 @@ var momComputableOptions = {
 	},
 
 	// Produces format strings like "h(:mm)t" -> "6p" / "6:30p"
-	extraSmallTimeFormat: function(momOptions) {
+	noMeridiemTimeFormat: function(momOptions) {
 		return momOptions.longDateFormat('LT')
 			.replace(':mm', '(:mm)')
 			.replace(/(\Wmm)$/, '($1)') // like above, but for foreign locales
@@ -13989,7 +13989,7 @@ var ListViewGrid = Grid.extend({
 
 	// like "4:00am"
 	computeEventTimeFormat: function() {
-		return this.view.opt('mediumTimeFormat');
+		return this.view.opt('noMeridiemTimeFormat');
 	},
 
 	// for events with a url, the whole <tr> should be clickable,

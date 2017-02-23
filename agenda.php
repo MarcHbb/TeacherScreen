@@ -1,3 +1,10 @@
+<?php 
+	include("fonctions.inc.php");
+	$prof = $_GET['prof'];
+	$ical   = new ICal($prof.'.ics');
+	$inter = $liste_intervenants[$prof];
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,13 +14,10 @@
 <script src='js/moment.min.js'></script>
 <script src='js/jquery.min.js'></script>
 <script src='js/fullcalendar.min.js'></script>
-<script src='fullcalendar/lang-all.js'></script>
-<script src='fullcalendar/fullcalendar.js'></script>
 
 <script>
 <?php
-require 'class.iCalReader.php';
-$ical   = new ICal('MyCal.ics');
+
 $events = $ical->events();
 ?>
 $(document).ready(function() {
@@ -63,7 +67,7 @@ $(document).ready(function() {
                             echo "end:\"".$end."\"\n";
                             echo "},\n";
 													}
-													?>
+						?>
 			],
 		 timeFormat: 'H:mm'
 
@@ -78,7 +82,6 @@ $(document).ready(function() {
 		padding: 0;
 		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
 		font-size: 14px;
-		overflow-y:hidden;
 
 	}
 	#calendar {
@@ -88,6 +91,7 @@ $(document).ready(function() {
 </style>
 </head>
 <body>
+	<h1>Agenda de <?php echo $inter['nom']?></h1>
 	<div id='calendar'></div>
 </body>
 </html>

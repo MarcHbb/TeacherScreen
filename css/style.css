@@ -1,15 +1,38 @@
-.main_container {
-  display: flex;
-  justify-content:space-between;
-  width:600px;
-  height:300px;
-  border:1px solid black;
-  margin:0 auto;
+.mdl-grid
+{
+  margin-top: 0px;
+  margin-left: auto;
 }
 
-.prof {
-  border:1px solid black;
-  width:200px;
-  text-align: center;
+.demo-card-wide mdl-card mdl-shadow--2dp
+{
+  margin-left: 25px;
+}
 
+h1,h3
+{
+  text-align: center;
+}
+/*
+#global {
+  margin-left: auto;
+  margin-right: auto;
+  width: ...; /* largeur obligatoire pour être centré
+}
+*/
+#container {
+  margin-top: 200px;
+}
+
+
+.mdl-layout__content {
+    text-align: center;
+}
+
+.mdl-card__title-text {
+  padding-left:10px;
+}
+
+.mdl-grid {
+  margin-left:170px;
 }

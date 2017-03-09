@@ -9,22 +9,30 @@
 			),
 			'MarcCal' => array(
 				'id' => 'MarcCal',
-				'nom' => 'M. HABIB',
-				'ical_key' => '97cda1cbb8fedd04956b6cc2e4acb5dc',
+				'nom' => 'Marc HABIB',
+				'ical_key' => '97cda1cbb8fedd04956b6cc2e4acb5dc'
 			),
 			'Professeur3' => array(
 				'id' => 'Professeur3',
 				'nom' => 'Professeur3',
-				'ical_key' => 'dfaf14b0668bec296d78b934497d25b8',
+				'ical_key' => 'dfaf14b0668bec296d78b934497d25b8'
 			),
 			'Professeur4' => array(
 				'id' => 'Professeur4',
 				'nom' => 'Professeur4'
 			),
+			'Professeur5' => array(
+				'id' => 'Professeur4',
+				'nom' => 'Professeur4'
+			),
+			'Professeur6' => array(
+				'id' => 'Professeur4',
+				'nom' => 'Professeur4'
+			)
 		);
 	
 	function etat_occupation_intervenant($intervenant) {
-		$retour = 'Non';
+		$retour = 'Disponible';
 		$nom_fichier = $intervenant['id'].'.ics';
 		
 		if (!file_exists($nom_fichier)) {
@@ -64,17 +72,14 @@
 				$req  ="insert into ...";
 			}
 			*/
-		} 
 		
 		
-		if (!file_exists($nom_fichier)) {
-			$retour = "Erreur pas d'ICS";
 		} else {
 			$ical   = new ICal($nom_fichier);
 			$events = $ical->events();
 			
-			$date_eng = strtotime(date('Y-m-d H:i'));
-			//$date_eng = strtotime('2017-02-22 16:16');
+			//$date_eng = strtotime(date('Y-m-d H:i'));
+			$date_eng = strtotime('2017-03-09 10:00');
 			
 			// // SI passage en bdd on ne parcours pas l'ics mais uon requete la BDD
 			//$req = "select * from aaaa where '2017-02-22 16:16' between start_int  AND end_int  ;";
@@ -102,7 +107,7 @@
 				$end_int = strtotime($endyear.'-'.$endmonth.'-'.$endday. ' '.$endhour.':'.$startmin);
 			
 				if ($date_eng>=$start_int && $date_eng<=$end_int) {
-					$retour = 'Oui';
+					$retour = 'Occupé';
 					break;
 				}
 			}

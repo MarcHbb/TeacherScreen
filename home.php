@@ -12,7 +12,6 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 
-
   </head>
 
   <body>
@@ -72,14 +71,14 @@
                     <?php } } ?>
      
                   </div>
-                  <div class="container">
+                  <div class="">
                     <?php 	if (!isset($inter['ical_key'])) {
                       ?>
                       <p>Pas de Calendrier défini</p>
                       <?php
                     } else { ?>
                     <a href="./agenda.php?prof=<?=$int?>">
-                        <button data-toggle="modal" href="#infosprof1" data-backdrop="false" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                             Emploi du temps
                         </button>
                     </a>

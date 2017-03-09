@@ -20,7 +20,11 @@ h1,h3
   width: ...; /* largeur obligatoire pour être centré
 }
 */
-
+#retour {
+  position: absolute;
+  top:20px;
+  z-index: 1;
+}
 
 
 .mdl-layout__content {

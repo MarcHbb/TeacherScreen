@@ -96,8 +96,14 @@ $(document).ready(function() {
 </style>
 </head>
 <body>
-	<h1>Agenda de <?php echo $inter['nom']?></h1>
-	<div id='calendar'></div>
+	<div class="container_fluid">
+		<a href="./home.php">
+		<button class="btn" id="retour"> Retour</button>
+		</a>
+		<h1>Agenda de <?php echo $inter['nom']?></h1>
+	</div>
+		<div id='calendar'></div>
+	
 
 </body>
 </html>
